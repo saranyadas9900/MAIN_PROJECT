@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+    <style>
+       body {
+            margin: 0;
+            padding: 0;
+            background-image: url('static/images/image2.jpg'); /* Replace 'path/to/your/background/image.jpg' with the actual path to your image */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+           
+            text-align: center;
+            margin-top: 50px;
+        }
+        .result-box {
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 300px;
+            width: 100%;
+            text-align: center;
+            background-color: {{ box_color }};
+            margin : 0 auto;
+           
+        }
+        .result-message {
+            margin-bottom: 20px;
+            font-size: 18px;
+            
+        }
+        .feature-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .feature-item {
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        .close-button {
+            background-color: {{ box_color }} ;
+            border: none;
+            color: red;
+            padding: 5px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin-top: 15px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        img {
+            max-width: 100%; /* Set maximum width to prevent image from exceeding its container */
+            height: auto; /* Maintain aspect ratio */
+            display: block; /* Ensure proper alignment */
+            margin: 0 auto; /* Center the image horizontally */
+            margin-top: 20px; /* Add some top margin for spacing */
+        }
+
+    </style>
+    </head>
+   
+<body>
+    <h1>Floor Plan Classifier</h1>
+   
+    <div class="result-box">
+        <h4>Result:</h4>
+        <h2 class="result-message">{{ result }}</h2>
+        <img src="{{ filename }}" alt="Selected Image">
+       <ul class="feature-list">
+            {% for feature in features %}
+            <li class="feature-item">{{ feature }}</li>
+            {% endfor %}
+        </ul>
+        <button class="close-button" onclick="closeWindow()">Close</button>
+    </div>
+    <script>
+        function closeWindow() {
+            window.location.href = "/";
+        }
+    </script>
+</body>
+</html>
