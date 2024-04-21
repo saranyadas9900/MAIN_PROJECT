@@ -120,7 +120,7 @@ class AppraisalVisionTrainer:
         # Train Random Forest classifier
         self.model = RandomForestClassifier(n_estimators=100, random_state=42)
         self.model.fit(X, y)
-        print("Training complete.")
+        print("Training completed.")
 
 
 
